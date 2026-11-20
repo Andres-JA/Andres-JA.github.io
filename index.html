@@ -1,398 +1,118 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Jairo Angulo — Portafolio</title>
-<meta name="description" content="Portafolio de Jairo Angulo, estudiante de Ingeniería en Ciencias de la Computación en la Escuela Politécnica Nacional. Redes, Linux, bases de datos y cloud.">
-<meta name="theme-color" content="#0f766e">
-<style>
-:root{
-  --bg:#f7f8f6; --surface:#ffffff; --surface-2:#eef2ef;
-  --text:#14201d; --muted:#4a5b56; --border:#d5ddd9;
-  --accent:#0f766e; --accent-ink:#ffffff; --accent-soft:#d9f0ec;
-  --focus:#b45309;
-  --radius:14px; --shadow:0 1px 2px rgba(20,32,29,.06),0 8px 24px rgba(20,32,29,.06);
-  --font:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
-  --mono:ui-monospace,'SF Mono','Cascadia Code',Consolas,monospace;
-}
-:root[data-theme="dark"]{
-  --bg:#0d1513; --surface:#141e1b; --surface-2:#1b2824;
-  --text:#e8f0ed; --muted:#a5b6b0; --border:#2a3a35;
-  --accent:#4fd1c1; --accent-ink:#06201c; --accent-soft:#12332e;
-  --focus:#fbbf24;
-  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3);
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;scroll-padding-top:84px}
-body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.65;font-size:1rem;-webkit-font-smoothing:antialiased}
-a{color:var(--accent);text-underline-offset:3px}
-a:hover{text-decoration-thickness:2px}
-:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:6px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
-
-/* Skip link — control y libertad del usuario */
-.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--accent-ink);padding:10px 16px;border-radius:8px;z-index:100;font-weight:600}
-.skip:focus{left:12px}
-
-/* Barra de progreso — visibilidad del estado */
-.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--accent);z-index:60;transition:width .1s}
-
-/* Header */
-header.site{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
-.brand{font-weight:700;letter-spacing:-.02em;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:10px}
-.brand .dot{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font-size:.8rem;font-weight:800}
-nav ul{display:flex;gap:4px;list-style:none}
-nav a.link{display:block;padding:8px 12px;border-radius:8px;color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500}
-nav a.link:hover{background:var(--surface-2);color:var(--text)}
-nav a.link[aria-current="true"]{background:var(--accent-soft);color:var(--accent);font-weight:600}
-.tools{display:flex;gap:8px;align-items:center}
-.icon-btn{width:40px;height:40px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);cursor:pointer;display:grid;place-items:center;font-size:1.05rem}
-.icon-btn:hover{background:var(--surface-2)}
-.menu-btn{display:none}
-
-/* Hero */
-.hero{padding:72px 0 56px;display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:center}
-.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.85rem;font-weight:600;color:var(--accent);background:var(--accent-soft);padding:6px 12px;border-radius:999px}
-.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
-h1{font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.1;letter-spacing:-.03em;margin:18px 0 14px}
-h1 span{color:var(--accent)}
-.lead{font-size:1.125rem;color:var(--muted);max-width:56ch}
-.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font-weight:600;font-size:.95rem;text-decoration:none;border:1.5px solid var(--accent);cursor:pointer;font-family:inherit;min-height:46px}
-.btn.primary{background:var(--accent);color:var(--accent-ink)}
-.btn.primary:hover{filter:brightness(1.08)}
-.btn.ghost{background:transparent;color:var(--accent)}
-.btn.ghost:hover{background:var(--accent-soft)}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
-.facts{padding:24px}
-.facts h2{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:14px}
-.facts dl{display:grid;gap:14px}
-.facts dt{font-size:.8rem;color:var(--muted)}
-.facts dd{font-weight:600}
-
-
-/* Foto */
-.hero-side{display:grid;gap:18px}
-.photo{width:min(260px,70%);aspect-ratio:1/1;margin:0 auto;border-radius:50%;overflow:hidden;border:4px solid var(--surface);box-shadow:0 0 0 3px var(--accent),var(--shadow);background:var(--accent-soft);display:grid;place-items:center;color:var(--accent);font-size:3.2rem;font-weight:800}
-.photo img{width:100%;height:100%;object-fit:cover;object-position:center top;display:block}
-
-/* Sections */
-section{padding:56px 0}
-.sec-head{margin-bottom:28px}
-.sec-head .kicker{font-family:var(--mono);font-size:.82rem;color:var(--accent);font-weight:600}
-h2.title{font-size:clamp(1.6rem,3.5vw,2.1rem);letter-spacing:-.02em;line-height:1.2;margin-top:4px}
-.sec-head p{color:var(--muted);margin-top:8px;max-width:60ch}
-
-/* Perfil */
-.about{padding:28px;font-size:1.05rem}
-.traits{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px;list-style:none}
-.traits li{padding:6px 14px;background:var(--surface-2);border-radius:999px;font-size:.9rem;font-weight:500}
-
-/* Skills */
-.grid{display:grid;gap:18px}
-.skills{grid-template-columns:repeat(auto-fill,minmax(290px,1fr))}
-.skill{padding:22px}
-.skill h3{font-size:1.02rem;display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.skill h3 .ic{width:34px;height:34px;border-radius:9px;background:var(--accent-soft);display:grid;place-items:center;font-size:1rem}
-.chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none}
-.chips li{font-size:.85rem;padding:4px 11px;border-radius:7px;background:var(--surface-2);border:1px solid var(--border)}
-
-/* Projects */
-.projects{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
-.project{padding:26px;display:flex;flex-direction:column;gap:14px}
-.project .meta{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
-.status{font-size:.78rem;font-weight:700;padding:3px 10px;border-radius:999px}
-.status.wip{background:#fef3c7;color:#7c4a03}
-.status.done{background:var(--accent-soft);color:var(--accent)}
-:root[data-theme="dark"] .status.wip{background:#3a2d0a;color:#fcd34d}
-.project h3{font-size:1.2rem;letter-spacing:-.01em}
-.project p{color:var(--muted)}
-.project ul.todo{padding-left:1.1rem;color:var(--muted);font-size:.93rem}
-.project .tools-used{margin-top:auto;padding-top:14px;border-top:1px solid var(--border)}
-.project .tools-used strong{font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:8px}
-
-/* Timeline */
-.timeline{list-style:none;border-left:2px solid var(--border);margin-left:8px}
-.timeline li{position:relative;padding:0 0 28px 28px}
-.timeline li::before{content:"";position:absolute;left:-8px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
-.timeline .when{font-family:var(--mono);font-size:.82rem;color:var(--accent);font-weight:600}
-.timeline h3{font-size:1.1rem;margin:2px 0}
-.timeline p{color:var(--muted)}
-.cols{display:grid;grid-template-columns:1fr 1fr;gap:40px}
-.cols h3.sub{font-size:1rem;margin-bottom:18px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-size:.8rem}
-
-/* Contact */
-.contact{padding:36px;text-align:center}
-.contact h2{font-size:1.7rem;letter-spacing:-.02em}
-.contact p{color:var(--muted);margin:10px auto 24px;max-width:50ch}
-.contact-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:8px;text-align:left}
-.c-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:var(--surface-2);border-radius:12px;border:1px solid var(--border);text-decoration:none;color:var(--text);min-height:60px}
-a.c-item:hover{border-color:var(--accent)}
-.c-item .ic{font-size:1.2rem}
-.c-item small{display:block;color:var(--muted);font-size:.75rem}
-.c-item span.v{font-weight:600;font-size:.92rem;word-break:break-all}
-.copy{margin-left:auto;background:none;border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:.78rem;cursor:pointer;color:var(--text);font-family:inherit}
-.copy:hover{background:var(--surface)}
-
-footer{padding:32px 0 48px;border-top:1px solid var(--border);color:var(--muted);font-size:.88rem;text-align:center}
-
-.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:var(--text);color:var(--bg);padding:12px 20px;border-radius:10px;font-size:.92rem;font-weight:500;opacity:0;pointer-events:none;transition:.25s;z-index:90}
-.toast.show{opacity:1;transform:translate(-50%,0)}
-.totop{position:fixed;right:20px;bottom:20px;opacity:0;pointer-events:none;transition:.2s}
-.totop.show{opacity:1;pointer-events:auto}
-
-/* WhatsApp flotante */
-.wa{position:fixed;right:20px;bottom:76px;z-index:70;display:inline-flex;align-items:center;gap:9px;background:#25d366;color:#fff;text-decoration:none;padding:12px 16px 12px 12px;border-radius:999px;box-shadow:0 6px 20px rgba(37,211,102,.45);font-weight:600;font-size:.92rem;transition:transform .2s,box-shadow .2s}
-.wa:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(37,211,102,.55);color:#fff;text-decoration:none}
-.wa svg{width:26px;height:26px;flex:none;fill:#fff}
-.wa::before{content:"";position:absolute;inset:0;border-radius:999px;animation:wa-pulse 2.6s infinite}
-@keyframes wa-pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
-@media (max-width:520px){.wa .wa-txt{display:none}.wa{padding:13px}}
-
-/* Reveal */
-.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s}
-.reveal.in{opacity:1;transform:none}
-
-@media (max-width:860px){
-  .hero{grid-template-columns:1fr;padding-top:44px}
-  .cols{grid-template-columns:1fr;gap:12px}
-  .menu-btn{display:grid}
-  nav ul{display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:var(--bg);border-bottom:1px solid var(--border);padding:10px 20px 16px}
-  nav ul.open{display:flex}
-  nav a.link{padding:12px}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  *{transition:none!important;animation:none!important}
-  .reveal{opacity:1;transform:none}
-}
-@media print{
-  header.site,.totop,.progress,.cta,.toast,.copy,.wa{display:none}
-  body{background:#fff;color:#000}
-  .reveal{opacity:1;transform:none}
-  .card{box-shadow:none}
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jairo Angulo — Redes, Linux y Cloud</title>
+  <meta name="description" content="Jairo Angulo, estudiante de Computación en la Escuela Politécnica Nacional. Proyectos de Linux y bases de datos distribuidas, Azure Fundamentals y formación en Docker y Kubernetes. Quito, Ecuador.">
+  <meta name="theme-color" content="#181411">
+  <meta property="og:title" content="Jairo Angulo — Redes, Linux y Cloud">
+  <meta property="og:description" content="Conoce mis proyectos, formación y certificaciones. Disponible para oportunidades de nivel inicial.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_EC">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23181411'/%3E%3Ctext x='32' y='43' text-anchor='middle' font-family='Arial' font-size='30' font-weight='bold' fill='%23efb084'%3EJA%3C/text%3E%3C/svg%3E">
+  <script>document.documentElement.classList.add('js');try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.dataset.theme=t}catch(e){}</script>
+  <link rel="stylesheet" href="styles.css?v=20261120-reveal3">
+  <script src="script.js?v=20261120-reveal3" defer></script>
 </head>
 <body>
 <a class="skip" href="#contenido">Saltar al contenido</a>
-<div class="progress" id="progress" aria-hidden="true"></div>
-
-<header class="site">
+<svg class="svg-library" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-4.3 1.3-4.3-2.2-6-2.7M15 22v-3.5a3 3 0 0 0-.8-2.4c2.7-.3 5.6-1.3 5.6-6A4.7 4.7 0 0 0 18.5 7a4.4 4.4 0 0 0-.1-3.1S17.3 3.5 15 5a10 10 0 0 0-6 0C6.7 3.5 5.6 3.9 5.6 3.9A4.4 4.4 0 0 0 5.5 7a4.7 4.7 0 0 0-1.3 3.2c0 4.6 2.9 5.7 5.6 6A3 3 0 0 0 9 18.5V22"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24"><rect x="3" y="9" width="4" height="12"/><circle cx="5" cy="4.5" r="2"/><path d="M11 21V9h4v2a4.2 4.2 0 0 1 7 3v7h-4v-7a1.5 1.5 0 0 0-3 0v7"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="7" rx="2"/><rect x="3" y="14" width="18" height="7" rx="2"/><path d="M7 6.5h.01M7 17.5h.01M12 6.5h5M12 17.5h5"/></symbol>
+  <symbol id="i-network" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4M5 16v-4h14v4"/></symbol>
+  <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M7 19a5 5 0 1 1 0-10 7 7 0 0 1 13 1 4.5 4.5 0 0 1-1 9Z"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 4 16 4 16 0V5M4 12c0 4 16 4 16 0"/></symbol>
+  <symbol id="i-code" viewBox="0 0 24 24"><path d="m8 6-6 6 6 6m8-12 6 6-6 6M14 3l-4 18"/></symbol>
+  <symbol id="i-git" viewBox="0 0 24 24"><circle cx="6" cy="5" r="3"/><circle cx="6" cy="19" r="3"/><circle cx="18" cy="6" r="3"/><path d="M6 8v8m12-7c0 5-12 2-12 7"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 0 1 11 3a9 9 0 1 0 10 10Z"/></symbol>
+  <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="13" rx="2"/><path d="M16 8V3H3v13h5"/></symbol>
+</svg>
+<header class="site-header">
   <div class="wrap nav">
-    <a class="brand" href="#inicio" aria-label="Jairo Angulo, ir al inicio"><span class="dot" aria-hidden="true">JA</span>Jairo Angulo</a>
-    <nav aria-label="Navegación principal">
-      <ul id="menu">
-        <li><a class="link" href="#perfil">Perfil</a></li>
-        <li><a class="link" href="#competencias">Competencias</a></li>
-        <li><a class="link" href="#proyectos">Proyectos</a></li>
-        <li><a class="link" href="#formacion">Formación</a></li>
-        <li><a class="link" href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
-    <div class="tools">
-      <button class="icon-btn" id="theme" type="button" aria-label="Cambiar a modo oscuro" title="Cambiar tema">🌙</button>
-      <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">☰</button>
-    </div>
+    <a class="brand" href="#inicio" aria-label="Jairo Angulo, inicio">ja<span aria-hidden="true">/</span><span class="brand-name">Jairo Angulo</span></a>
+    <nav aria-label="Navegación principal"><ul id="menu">
+      <li><a href="#proyectos">Proyectos</a></li><li><a href="#competencias">Competencias</a></li><li><a href="#certificaciones">Certificaciones</a></li><li><a href="#perfil">Sobre mí</a></li><li><a href="#contacto">Contacto</a></li>
+    </ul></nav>
+    <div class="nav-tools"><button class="icon-button" id="theme" type="button" aria-label="Cambiar a modo claro" title="Cambiar a modo claro"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></button><button class="icon-button menu-button" id="menuBtn" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="menu"><svg class="icon" aria-hidden="true"><use href="#i-menu"/></svg></button></div>
   </div>
 </header>
-
 <main id="contenido">
-  <div class="wrap">
-    <!-- INICIO -->
-    <div class="hero" id="inicio">
-      <div>
-        <span class="eyebrow">Disponible para puestos de nivel inicial</span>
-        <h1>Hola, soy <span>Jairo Angulo</span></h1>
-        <p class="lead">Estudiante de Ingeniería en Ciencias de la Computación en la Escuela Politécnica Nacional. Me muevo entre redes, servidores Linux, bases de datos y cloud, y aprendo construyendo proyectos reales.</p>
-        <div class="cta">
-          <a class="btn primary" href="#proyectos">Ver proyectos →</a>
-          <a class="btn ghost" href="#contacto">Contactarme</a>
-        </div>
-      </div>
-      <div class="hero-side">
-      <figure class="photo reveal">
-        <img src="Picture1.jpg" alt="Foto de Jairo Angulo" width="520" height="520" fetchpriority="high"
-             onerror="this.remove();this.parentNode.setAttribute('role','img');this.parentNode.setAttribute('aria-label','Iniciales de Jairo Angulo');this.parentNode.textContent='JA'">
-      </figure>
-      <aside class="card facts reveal" aria-labelledby="datos">
-        <h2 id="datos">Datos rápidos</h2>
-        <dl>
-          <div><dt>Ubicación</dt><dd>Quito, Ecuador</dd></div>
-          <div><dt>Estudios</dt><dd>EPN · 7.º semestre</dd></div>
-          <div><dt>Certificación</dt><dd>Azure Fundamentals (AZ-900)</dd></div>
-          <div><dt>Idiomas</dt><dd>Español nativo · Inglés en curso</dd></div>
-        </dl>
-      </aside>
+  <section class="hero" id="inicio" aria-labelledby="nombre">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="availability"><span></span>Disponible para oportunidades de nivel inicial</div>
+      <figure class="portrait"><img src="pictures/FotoJairo.jpg" width="342" height="374" alt="Jairo Angulo" fetchpriority="high"></figure>
+      <p class="eyebrow">Estudiante de Computación · Escuela Politécnica Nacional</p>
+      <h1 id="nombre">Jairo <span>Angulo.</span></h1>
+      <p class="hero-role">Redes. Linux. <span>Cloud.</span></p>
+      <p class="hero-description">Me interesa la infraestructura que conecta todo.<br class="desktop-break"> Construyo mi camino en tecnología con proyectos de sistemas, redes y bases de datos.</p>
+      <div class="hero-actions"><a class="button primary" href="#proyectos">Conoce mis proyectos</a><a class="button secondary" href="#contacto">Hablemos</a></div>
+      <div class="social-links">
+        <a href="https://github.com/Andres-JA" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub<span class="sr"> (abre en otra pestaña)</span></a>
+        <a href="https://www.linkedin.com/in/jairo-angulo-5898233b5" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn<span class="sr"> (abre en otra pestaña)</span></a>
+        <a href="mailto:angulo.jairo2004@hotmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Correo</a>
       </div>
     </div>
+    <div class="wrap profile-strip" aria-label="Mi perfil en un vistazo"><span><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Quito, Ecuador</span><span>EPN · 7.º semestre en curso</span><a href="#certificaciones">Microsoft Certified · Azure Fundamentals</a></div>
+  </section>
 
-    <!-- PERFIL -->
-    <section id="perfil" class="reveal" aria-labelledby="t-perfil">
-      <div class="sec-head"><span class="kicker">01 / perfil</span><h2 class="title" id="t-perfil">Sobre mí</h2></div>
-      <div class="card about">
-        <p>Busco integrarme a un puesto de nivel inicial donde pueda aplicar y fortalecer mis conocimientos en el área tecnológica. Destaco por mi rápida capacidad de aprendizaje, mis habilidades de comunicación y el trabajo en equipo, con motivación para desarrollarme en un entorno dinámico y colaborativo.</p>
-        <ul class="traits" aria-label="Fortalezas">
-          <li>Aprendizaje rápido</li><li>Comunicación</li><li>Trabajo en equipo</li><li>Enfoque práctico</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- COMPETENCIAS -->
-    <section id="competencias" class="reveal" aria-labelledby="t-comp">
-      <div class="sec-head"><span class="kicker">02 / competencias</span><h2 class="title" id="t-comp">Lo que sé hacer</h2>
-        <p>Agrupado por área para que encuentres rápido lo que buscas.</p></div>
-      <div class="grid skills">
-        <article class="card skill"><h3><span class="ic" aria-hidden="true">🌐</span>Redes</h3>
-          <ul class="chips"><li>Routers y switches</li><li>Enrutamiento estático y dinámico</li><li>TCP/IP</li><li>Cisco CCST Networking</li></ul></article>
-        <article class="card skill"><h3><span class="ic" aria-hidden="true">☁️</span>Cloud e infraestructura</h3>
-          <ul class="chips"><li>Microsoft Azure</li><li>Gestión de recursos</li></ul></article>
-        <article class="card skill"><h3><span class="ic" aria-hidden="true">🗄️</span>Bases de datos</h3>
-          <ul class="chips"><li>SQL Server</li><li>MySQL</li><li>Relacionales y distribuidas</li><li>Modelado de datos</li></ul></article>
-        <article class="card skill"><h3><span class="ic" aria-hidden="true">💻</span>Programación</h3>
-          <ul class="chips"><li>C++</li><li>Java</li><li>Python</li><li>POO</li><li>OpenGL</li></ul></article>
-        <article class="card skill"><h3><span class="ic" aria-hidden="true">🐧</span>Sistemas y administración</h3>
-          <ul class="chips"><li>Linux (Ubuntu Server)</li><li>Usuarios y permisos</li><li>Bash</li><li>Docker</li><li>Windows</li></ul></article>
-        <article class="card skill"><h3><span class="ic" aria-hidden="true">🛠️</span>Herramientas</h3>
-          <ul class="chips"><li>Git</li><li>Visual Studio</li><li>VS Code</li><li>SQL Server Management Studio</li></ul></article>
-      </div>
-    </section>
-
-    <!-- PROYECTOS -->
-    <section id="proyectos" class="reveal" aria-labelledby="t-proy">
-      <div class="sec-head"><span class="kicker">03 / proyectos</span><h2 class="title" id="t-proy">Proyectos</h2>
-        <p>Cada proyecto indica su estado actual.</p></div>
-      <div class="grid projects">
-        <article class="card project">
-          <div class="meta"><span class="status wip">En desarrollo</span><span style="color:var(--muted);font-size:.85rem">Proyecto personal</span></div>
-          <h3>Linux Server Journey</h3>
-          <p>Administración de un servidor Linux desde cero, simulando el trabajo real de un sysadmin: cada versión resuelve un problema concreto de un entorno de producción.</p>
-          <p><strong>Hecho:</strong> instalación y puesta a punto de Ubuntu Server.</p>
-          <div><strong style="font-size:.9rem">Próximos pasos</strong>
-            <ul class="todo"><li>Usuarios y permisos</li><li>Seguridad: UFW, llaves SSH, Fail2Ban</li><li>Automatización con Bash y backups con cron</li><li>Monitoreo, Nginx y contenedores Docker</li></ul></div>
-          <div class="tools-used"><strong>Herramientas</strong><ul class="chips"><li>Ubuntu Server</li><li>Bash</li><li>Docker</li></ul></div>
-          <a class="btn ghost" href="https://github.com/Andres-JA" target="_blank" rel="noopener">Ver en GitHub <span class="sr" style="position:absolute;left:-999px">(abre en una pestaña nueva)</span>↗</a>
-        </article>
-        <article class="card project">
-          <div class="meta"><span class="status done">Completado</span><span style="color:var(--muted);font-size:.85rem">Proyecto académico</span></div>
-          <h3>Base de datos distribuida</h3>
-          <p>Diseñé e implementé una base de datos distribuida en múltiples nodos aplicando replicación, fragmentación y asignación de datos.</p>
-          <p>Simulé un entorno empresarial con varias sedes, gestionando la consistencia y disponibilidad de la información entre nodos.</p>
-          <div class="tools-used"><strong>Herramientas</strong><ul class="chips"><li>SQL Server</li><li>SQL Server Management Studio</li></ul></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- FORMACIÓN -->
-    <section id="formacion" class="reveal" aria-labelledby="t-form">
-      <div class="sec-head"><span class="kicker">04 / formación</span><h2 class="title" id="t-form">Educación y certificaciones</h2></div>
-      <div class="cols">
-        <div>
-          <h3 class="sub">Educación</h3>
-          <ol class="timeline">
-            <li><span class="when">2023 – Actualidad</span><h3>Ingeniería en Ciencias de la Computación</h3><p>Escuela Politécnica Nacional · 7.º semestre (en curso)</p></li>
-          </ol>
+  <section class="section wrap" id="proyectos" aria-labelledby="t-proyectos">
+    <div class="section-heading"><div><p class="eyebrow">De la teoría a la práctica</p><h2 id="t-proyectos">Proyectos <em>seleccionados.</em></h2></div><p>Lo que estoy construyendo<br>y lo que he aprendido en el proceso.</p></div>
+    <div class="project-grid">
+      <article class="project">
+        <div class="project-visual linux-visual" role="img" aria-label="Ilustración de un entorno de práctica Ubuntu Server con terminal">
+          <div class="terminal"><div class="terminal-bar"><span class="window-dots"><i></i><i></i><i></i></span><span>ubuntu-server · bash</span></div><div class="terminal-body"><span class="terminal-comment"># Linux Server Journey</span><span><b>jairo@ubuntu-server</b>:~$</span><strong>Aprender desde la raíz.</strong><span class="terminal-bottom">Ubuntu Server <span>/</span> Bash <span>/</span> Docker</span></div></div><span class="visual-caption">Ilustración del entorno de práctica</span>
         </div>
-        <div>
-          <h3 class="sub">Certificaciones y capacitación</h3>
-          <ol class="timeline">
-            <li><span class="when">2026</span><h3>Microsoft Certified: Azure Fundamentals (AZ-900)</h3><p>Microsoft · Manejo de herramientas en la nube.</p></li>
-            <li><span class="when">2025</span><h3>XII Jornadas JISIC</h3><p>Escuela Politécnica Nacional · 50 horas académicas en conceptos clave de Inteligencia Artificial, tendencias emergentes y aplicaciones prácticas.</p></li>
-          </ol>
+        <div class="project-content"><div class="project-meta"><span class="status progress">En desarrollo</span><span>Laboratorio personal</span></div><h3>Linux Server Journey</h3><p>Un servidor Linux desde cero para practicar administración de sistemas, seguridad y automatización.</p><div class="project-result"><span>Avance actual</span><p>Instalación y puesta a punto de Ubuntu Server.</p></div><details><summary>Qué sigue en el proyecto</summary><ul><li>Administración de usuarios y permisos.</li><li>Seguridad con UFW, llaves SSH y Fail2Ban.</li><li>Automatización con Bash y backups con cron.</li><li>Monitoreo, Nginx y contenedores Docker.</li></ul></details><ul class="tags" aria-label="Tecnologías"><li>Ubuntu Server</li><li>Bash</li><li>Docker</li></ul></div>
+      </article>
+      <article class="project">
+        <div class="project-visual database-visual" role="img" aria-label="Esquema conceptual de una base de datos distribuida entre tres sedes">
+          <div class="topology"><div class="database-node main-node"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg><span>Nodo central</span></div><div class="connections"></div><div class="branch-nodes"><div class="database-node"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg><span>Sede A</span></div><div class="database-node"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg><span>Sede B</span></div></div></div><span class="visual-caption">Esquema conceptual · distribución entre nodos</span>
         </div>
-      </div>
-    </section>
+        <div class="project-content"><div class="project-meta"><span class="status complete">Completado</span><span>Proyecto académico</span></div><h3>Base de datos distribuida</h3><p>Diseño e implementación de una base de datos en múltiples nodos, simulando una empresa con varias sedes.</p><div class="project-result"><span>Trabajo realizado</span><p>Replicación, fragmentación y asignación de datos, gestionando su consistencia y disponibilidad.</p></div><p class="project-context">Desarrollado como parte de mi formación en la EPN.</p><ul class="tags" aria-label="Tecnologías"><li>SQL Server</li><li>SSMS</li><li>Modelado de datos</li></ul></div>
+      </article>
+    </div>
+    <div class="section-foot"><p>Más sobre mi trabajo y mi código.</p><a class="button secondary" href="https://github.com/Andres-JA" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>Mi perfil en GitHub<span class="sr"> (abre en otra pestaña)</span></a></div>
+  </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="reveal" aria-labelledby="t-cont">
-      <div class="card contact">
-        <h2 id="t-cont">¿Conversamos?</h2>
-        <p>Escríbeme por el medio que prefieras. Responderé lo antes posible.</p>
-        <div class="contact-list">
-          <div class="c-item"><span class="ic" aria-hidden="true">✉️</span><div><small>Correo</small><a class="v" href="mailto:angulo.jairo2004@hotmail.com" style="font-weight:600;font-size:.88rem;word-break:break-all">angulo.jairo2004@hotmail.com</a></div><button class="copy" type="button" data-copy="angulo.jairo2004@hotmail.com" aria-label="Copiar correo">Copiar</button></div>
-          <div class="c-item"><span class="ic" aria-hidden="true">📞</span><div><small>Teléfono</small><a class="v" href="tel:+593978823051" style="font-weight:600;font-size:.92rem">+593 97 882 3051</a></div><button class="copy" type="button" data-copy="+593 97 882 3051" aria-label="Copiar teléfono">Copiar</button></div>
-          <a class="c-item" href="https://www.linkedin.com/in/jairo-angulo-5898233b5" target="_blank" rel="noopener"><span class="ic" aria-hidden="true">💼</span><div><small>LinkedIn (pestaña nueva)</small><span class="v">jairo-angulo-5898233b5</span></div></a>
-          <a class="c-item" href="https://github.com/Andres-JA" target="_blank" rel="noopener"><span class="ic" aria-hidden="true">🐙</span><div><small>GitHub (pestaña nueva)</small><span class="v">Andres-JA</span></div></a>
-        </div>
-      </div>
-    </section>
-  </div>
+  <section class="skills-band" id="competencias" aria-labelledby="t-competencias"><div class="section wrap">
+    <div class="section-heading"><div><p class="eyebrow">Conocimientos técnicos</p><h2 id="t-competencias">Las herramientas<br>con las que <em>construyo.</em></h2></div><p>Una base en computación,<br>con foco en sistemas e infraestructura.</p></div>
+    <div class="skills-grid">
+      <article class="skill"><svg class="icon" aria-hidden="true"><use href="#i-network"/></svg><div><h3>Redes</h3><p>TCP/IP · Routers y switches · Enrutamiento estático y dinámico · Cisco CCST Networking</p></div></article>
+      <article class="skill"><svg class="icon" aria-hidden="true"><use href="#i-cloud"/></svg><div><h3>Cloud y contenedores</h3><p>Microsoft Azure · Gestión de recursos · Docker · Fundamentos de Kubernetes</p></div></article>
+      <article class="skill"><svg class="icon" aria-hidden="true"><use href="#i-server"/></svg><div><h3>Sistemas y administración</h3><p>Ubuntu Server · Usuarios y permisos · Bash · Windows</p></div></article>
+      <article class="skill"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg><div><h3>Bases de datos</h3><p>SQL Server · MySQL · Modelado de datos · Bases de datos relacionales y distribuidas</p></div></article>
+      <article class="skill"><svg class="icon" aria-hidden="true"><use href="#i-code"/></svg><div><h3>Programación</h3><p>C++ · Java · Python · Programación orientada a objetos · OpenGL</p></div></article>
+      <article class="skill"><svg class="icon" aria-hidden="true"><use href="#i-git"/></svg><div><h3>Herramientas de desarrollo</h3><p>Git · Visual Studio · VS Code · SQL Server Management Studio</p></div></article>
+    </div>
+  </div></section>
+
+  <section class="section wrap" id="certificaciones" aria-labelledby="t-certificaciones">
+    <div class="section-heading"><div><p class="eyebrow">Aprendizaje con respaldo</p><h2 id="t-certificaciones">Credenciales <em>destacadas.</em></h2></div><p>Cada certificado enlaza directamente<br>a la credencial de su emisor.</p></div>
+    <div class="cert-grid">
+      <a class="certificate" href="https://learn.microsoft.com/en-us/users/jairoangulo-6954/credentials/71ad6de4c909355c?ref=https%3A%2F%2Fwww.linkedin.com%2F" target="_blank" rel="noopener noreferrer"><div class="cert-image"><img src="pictures/certificadoazure.png" alt="Certificado Microsoft Certified: Azure Fundamentals de Jairo Angulo" width="902" height="565" loading="lazy" decoding="async"></div><div class="cert-content"><span class="cert-issuer"><span class="ms-logo" aria-hidden="true"><i></i><i></i><i></i><i></i></span>Microsoft</span><h3>Azure Fundamentals</h3><p>Microsoft Certified · AZ-900</p><span class="cert-date">7 de agosto de 2026</span><span class="cert-action">Ver credencial en Microsoft Learn<small>Abre en otra pestaña</small></span></div></a>
+      <a class="certificate" href="https://www.datacamp.com/completed/statement-of-accomplishment/track/9d81632ad037fa50b242b871fc05cfd85e9bed2e" target="_blank" rel="noopener noreferrer"><div class="cert-image"><img src="pictures/ContainerizationVirtualization.png" alt="Certificado Containerization and Virtualization with Docker and Kubernetes de Jairo Angulo, DataCamp" width="1077" height="601" loading="lazy" decoding="async"></div><div class="cert-content"><span class="cert-issuer"><span class="dc-logo" aria-hidden="true">&lt;/&gt;</span>DataCamp</span><h3>Containerization and Virtualization</h3><p>Docker y Kubernetes · 13 horas</p><span class="cert-date">8 de noviembre de 2026</span><span class="cert-action">Ver certificado en DataCamp<small>Abre en otra pestaña</small></span></div></a>
+    </div>
+  </section>
+
+  <section class="about-band" id="perfil" aria-labelledby="t-perfil"><div class="section wrap about-layout">
+    <div class="about-copy"><p class="eyebrow">La persona detrás del código</p><h2 id="t-perfil">Curiosidad técnica.<br><em>Actitud de equipo.</em></h2><p>Soy estudiante de Ingeniería en Ciencias de la Computación en la Escuela Politécnica Nacional. Me interesa entender cómo funcionan los sistemas y convertir lo que aprendo en práctica.</p><p>Busco una oportunidad de nivel inicial donde pueda aportar, aprender de otros profesionales y seguir desarrollándome en tecnología.</p><ul class="strengths" aria-label="Fortalezas"><li>Aprendizaje rápido</li><li>Comunicación</li><li>Trabajo en equipo</li></ul><p class="languages">Español nativo <span>·</span> Inglés en curso</p></div>
+    <div class="education" id="formacion"><h3>Mi formación</h3><ol class="timeline"><li><span class="timeline-date">2023 — Actualidad</span><h4>Ingeniería en Ciencias de la Computación</h4><p>Escuela Politécnica Nacional</p><span class="education-detail">7.º semestre en curso · Quito, Ecuador</span></li><li><span class="timeline-date">2025</span><h4>XII Jornadas JISIC</h4><p>Escuela Politécnica Nacional</p><span class="education-detail">50 horas académicas sobre inteligencia artificial, tendencias emergentes y aplicaciones prácticas.</span></li></ol></div>
+  </div></section>
+
+  <section class="section wrap contact-section" id="contacto" aria-labelledby="t-contacto">
+    <div class="contact-copy"><p class="eyebrow">El siguiente paso</p><h2 id="t-contacto">Hablemos de<br><em>oportunidades.</em></h2><p>¿Buscas un perfil de nivel inicial para tu equipo?<br> Me encantará conocer la oportunidad.</p><a class="button primary" href="mailto:angulo.jairo2004@hotmail.com"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg>Escríbeme un correo</a></div>
+    <div class="contact-channels"><div class="email-channel"><span class="channel-label">Correo electrónico</span><a href="mailto:angulo.jairo2004@hotmail.com">angulo.jairo2004@hotmail.com</a><button class="copy-button" type="button" data-copy="angulo.jairo2004@hotmail.com"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg><span>Copiar correo</span></button></div><div class="contact-socials"><a href="https://www.linkedin.com/in/jairo-angulo-5898233b5" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg>LinkedIn<span class="sr"> (abre en otra pestaña)</span></a><a href="https://github.com/Andres-JA" target="_blank" rel="noopener noreferrer"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg>GitHub<span class="sr"> (abre en otra pestaña)</span></a><a href="https://wa.me/593978823051" target="_blank" rel="noopener noreferrer">WhatsApp<span class="sr"> (abre en otra pestaña)</span></a></div><a class="phone" href="tel:+593978823051">+593 97 882 3051</a><span class="contact-location">Quito, Ecuador</span></div>
+  </section>
 </main>
-
-<footer><div class="wrap">© <span id="year">2026</span> Jairo Angulo · Quito, Ecuador</div></footer>
-
-<a class="wa" href="https://wa.me/593978823051" target="_blank" rel="noopener" aria-label="Escribe a Jairo Angulo por WhatsApp (abre en una pestaña nueva)">
-  <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.004 3C8.832 3 3 8.83 3 16c0 2.29.6 4.52 1.74 6.49L3 29l6.68-1.72A12.96 12.96 0 0 0 16 29c7.17 0 13-5.83 13-13S23.17 3 16.004 3zm0 23.7c-2.02 0-4-.54-5.73-1.57l-.41-.24-3.96 1.02 1.06-3.86-.27-.43A10.65 10.65 0 0 1 5.3 16c0-5.9 4.8-10.7 10.7-10.7 5.9 0 10.7 4.8 10.7 10.7s-4.8 10.7-10.7 10.7zm5.87-8.01c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.51-.16-.73.16-.21.32-.83 1.05-1.02 1.26-.19.21-.38.24-.7.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.5.14-.66.14-.14.32-.38.48-.57.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.75-.99-2.39-.26-.63-.53-.54-.72-.55l-.62-.01c-.21 0-.56.08-.85.4-.29.32-1.11 1.09-1.11 2.65 0 1.56 1.14 3.07 1.3 3.28.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.77.24 1.46.21 2.01.13.61-.09 1.9-.78 2.17-1.53.27-.75.27-1.39.19-1.53-.08-.13-.29-.21-.61-.37z"/></svg>
-  <span class="wa-txt">WhatsApp</span>
-</a>
-<button class="icon-btn totop" id="totop" type="button" aria-label="Volver arriba">↑</button>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-<script>
-(function(){
-  var root=document.documentElement;
-  document.getElementById('year').textContent=new Date().getFullYear();
-
-  /* Tema: respeta preferencia del sistema y la recuerda */
-  var themeBtn=document.getElementById('theme'), saved=null;
-  try{saved=localStorage.getItem('theme')}catch(e){}
-  var dark=saved?saved==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
-  function applyTheme(){
-    root.setAttribute('data-theme',dark?'dark':'light');
-    themeBtn.textContent=dark?'☀️':'🌙';
-    themeBtn.setAttribute('aria-label',dark?'Cambiar a modo claro':'Cambiar a modo oscuro');
-  }
-  applyTheme();
-  themeBtn.addEventListener('click',function(){
-    dark=!dark;applyTheme();
-    try{localStorage.setItem('theme',dark?'dark':'light')}catch(e){}
-  });
-
-  /* Menú móvil */
-  var menu=document.getElementById('menu'), mb=document.getElementById('menuBtn');
-  function setMenu(o){menu.classList.toggle('open',o);mb.setAttribute('aria-expanded',o);mb.textContent=o?'✕':'☰';mb.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')}
-  mb.addEventListener('click',function(){setMenu(!menu.classList.contains('open'))});
-  menu.addEventListener('click',function(e){if(e.target.tagName==='A')setMenu(false)});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape')setMenu(false)});
-
-  /* Progreso, volver arriba, sección activa */
-  var bar=document.getElementById('progress'), top=document.getElementById('totop');
-  function onScroll(){
-    var h=document.documentElement.scrollHeight-innerHeight;
-    bar.style.width=(h>0?scrollY/h*100:0)+'%';
-    top.classList.toggle('show',scrollY>600);
-  }
-  addEventListener('scroll',onScroll,{passive:true});onScroll();
-  top.addEventListener('click',function(){scrollTo({top:0})});
-
-  var links=[].slice.call(document.querySelectorAll('nav a.link'));
-  if('IntersectionObserver' in window){
-    var spy=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){links.forEach(function(l){
-          if(l.getAttribute('href')==='#'+e.target.id)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}
-      });
-    },{rootMargin:'-35% 0px -55% 0px'});
-    links.forEach(function(l){var s=document.querySelector(l.getAttribute('href'));if(s)spy.observe(s)});
-    var rv=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');rv.unobserve(e.target)}})},{threshold:.08});
-    document.querySelectorAll('.reveal').forEach(function(el){rv.observe(el)});
-  }else{document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in')})}
-
-  /* Copiar con retroalimentación */
-  var toast=document.getElementById('toast'), tt;
-  function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},2200)}
-  document.querySelectorAll('.copy').forEach(function(b){
-    b.addEventListener('click',function(){
-      var v=b.getAttribute('data-copy');
-      var ok=function(){say('Copiado: '+v)};
-      var fail=function(){say('No se pudo copiar. Selecciona el texto manualmente.')};
-      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(ok,fail)}
-      else{try{var t=document.createElement('textarea');t.value=v;document.body.appendChild(t);t.select();document.execCommand('copy');t.remove();ok()}catch(e){fail()}}
-    });
-  });
-})();
-</script>
+<footer><div class="wrap footer-inner"><a class="brand footer-brand" href="#inicio">ja<span aria-hidden="true">/</span><span class="sr">Jairo Angulo, volver al inicio</span></a><span>© <span id="year">2026</span> Jairo Angulo</span><div class="footer-links"><a href="https://github.com/Andres-JA/Andres-JA.github.io" target="_blank" rel="noopener noreferrer">Código del portafolio<span class="sr"> (abre en otra pestaña)</span></a><a href="#inicio">Volver al inicio</a></div></div></footer>
+<div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
 </body>
 </html>
